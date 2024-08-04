@@ -25,8 +25,11 @@ def rc(G0): # Calculate the RCC value of the network
     v = np.empty(shape=[1, 0])
     for i in np.arange(z - 2):# Make sure the final network is connected
         G.remove_node(K_keys[i])
-        m = nx.density(G)
-        v = np.append(v, m)
+        m = nx.density(G_b)
+        if m == 1:
+            break
+        else:
+            v = np.append(v, m)
         x, y = rc_avg(K_values[0:len(v)], v)
     return x,y
 
