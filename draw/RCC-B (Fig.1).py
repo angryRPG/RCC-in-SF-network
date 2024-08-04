@@ -20,7 +20,10 @@ def rc(G0): # Calculate the RCC value of the network
         else:
             G_b.remove_node(B_keys[i])
             m = nx.density(G_b)
-            v = np.append(v, m)
+            if m == 1:
+                break
+            else:
+                v = np.append(v, m)
     a_, b_ = B_values[n:(len(v) + n)], v
     return a_, b_
 
